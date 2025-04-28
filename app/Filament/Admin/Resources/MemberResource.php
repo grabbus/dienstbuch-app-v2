@@ -45,6 +45,7 @@ class MemberResource extends Resource
                 Forms\Components\DatePicker::make('birthdate')
                     ->translateLabel()
                     ->format('d.m.Y')
+                    ->locale(App::getLocale())
                     ->required()
                     ->minDate(now()->subYears(100))
                     ->maxDate(now()),
@@ -62,7 +63,7 @@ class MemberResource extends Resource
                     ->translateLabel(),
                 Tables\Columns\TextColumn::make('birthdate')
                     ->translateLabel()
-                    ->format('d.m.Y'),
+                    ->date('d.m.Y'),
                 Tables\Columns\TextColumn::make('age')
                     ->translateLabel()
                     ->sortable()

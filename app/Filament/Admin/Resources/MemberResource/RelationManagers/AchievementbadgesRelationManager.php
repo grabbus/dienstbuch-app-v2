@@ -11,6 +11,7 @@ use Filament\Tables;
 use Filament\Tables\Actions\AttachAction;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 
 class AchievementbadgesRelationManager extends RelationManager
 {
@@ -55,7 +56,7 @@ class AchievementbadgesRelationManager extends RelationManager
                             ->translateLabel()
                             ->required()
                             ->displayFormat('d.m.Y')
-                            ->locale('de')
+                            ->locale(App::getLocale())
                             ->maxDate(now()),
                     ]),
             ])
@@ -66,7 +67,7 @@ class AchievementbadgesRelationManager extends RelationManager
                         ->translateLabel()
                         ->required()
                         ->displayFormat('d.m.Y')
-                        ->locale('de')
+                        ->locale(App::getLocale())
                         ->maxDate(now()),
                 ]),
                 Tables\Actions\DetachAction::make(),

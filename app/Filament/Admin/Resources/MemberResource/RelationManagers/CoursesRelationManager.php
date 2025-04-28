@@ -12,6 +12,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\App;
 
 class CoursesRelationManager extends RelationManager
 {
@@ -51,7 +52,7 @@ class CoursesRelationManager extends RelationManager
                             ->translateLabel()
                             ->required()
                             ->displayFormat('d.m.Y')
-                            ->locale('de')
+                            ->locale(App::getLocale())
                             ->maxDate(now()),
                     ]),
             ])
@@ -62,7 +63,7 @@ class CoursesRelationManager extends RelationManager
                             ->translateLabel()
                             ->required()
                             ->displayFormat('d.m.Y')
-                            ->locale('de')
+                            ->locale(App::getLocale())
                             ->maxDate(now()),
                     ]),
                 Tables\Actions\DetachAction::make(),
