@@ -18,7 +18,8 @@ class AchievementBadgeResource extends Resource
 {
     protected static ?string $model = AchievementBadge::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-trophy';
+    protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {
@@ -31,6 +32,9 @@ class AchievementBadgeResource extends Resource
                 Forms\Components\TextInput::make('level')
                     ->translateLabel()
                     ->maxLength(255),
+                Forms\Components\FileUpload::make('image')
+                    ->translateLabel()
+                    ->image()
             ]);
     }
 
@@ -38,8 +42,12 @@ class AchievementBadgeResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
+                Tables\Columns\ImageColumn::make('image')
+                    ->translateLabel(),
+                TextColumn::make('name')
+                ->translateLabel(),
                 TextColumn::make('level')
+                    ->translateLabel(),
             ])
             ->filters([
                 //
@@ -68,5 +76,21 @@ class AchievementBadgeResource extends Resource
             'create' => Pages\CreateAchievementBadge::route('/create'),
             'edit' => Pages\EditAchievementBadge::route('/{record}/edit'),
         ];
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('Achievement Badge');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('Achievement Badges');
+    }
+
+    public function getTitle(): string
+    {
+        return __('Achievement Badges');
+
     }
 }

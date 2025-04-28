@@ -2,6 +2,7 @@
 
 namespace App\Filament\Admin\Resources\MemberResource\RelationManagers;
 
+use App\Models\AchievementBadge;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Form;
@@ -9,21 +10,19 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Actions\AttachAction;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class CoursesRelationManager extends RelationManager
+class AchievementbadgesRelationManager extends RelationManager
 {
-    protected static string $relationship = 'courses';
+    protected static string $relationship = 'achievementbadges';
 
     public function form(Form $form): Form
     {
         return $form
             ->schema([
                 DatePicker::make('date_of_acceptance')
-                ->translateLabel()
-                ->format('d.m.Y')
+                    ->translateLabel()
+                    ->format('d.m.Y')
             ]);
     }
 
@@ -32,12 +31,16 @@ class CoursesRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('name')
             ->columns([
+                Tables\Columns\ImageColumn::make('image')
+                    ->translateLabel(),
                 Tables\Columns\TextColumn::make('name')
-                    ->label('Course')
+                    ->label('Achievement Badges')
+                    ->translateLabel(),
+                Tables\Columns\TextColumn::make('level')
                     ->translateLabel(),
                 Tables\Columns\TextColumn::make('date_of_acceptance')
-                    ->date('d.m.Y')
-                    ->translateLabel(),
+                    ->translateLabel()
+                    ->date('d.m.Y'),
             ])
             ->filters([
                 //
@@ -46,7 +49,8 @@ class CoursesRelationManager extends RelationManager
                 Tables\Actions\AttachAction::make()
                     ->preloadRecordSelect()
                     ->form(fn (AttachAction $action): array => [
-                        $action->getRecordSelect(),
+                        $action->getRecordSelect()
+                            ->options(AchievementBadge::all()->pluck('full_name', 'id')),
                         Forms\Components\DatePicker::make('date_of_acceptance')
                             ->translateLabel()
                             ->required()
@@ -57,16 +61,16 @@ class CoursesRelationManager extends RelationManager
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
-                    ->form([
-                        Forms\Components\DatePicker::make('date_of_acceptance')
-                            ->translateLabel()
-                            ->required()
-                            ->displayFormat('d.m.Y')
-                            ->locale('de')
-                            ->maxDate(now()),
-                    ]),
+                ->form([
+                    Forms\Components\DatePicker::make('date_of_acceptance')
+                        ->translateLabel()
+                        ->required()
+                        ->displayFormat('d.m.Y')
+                        ->locale('de')
+                        ->maxDate(now()),
+                ]),
                 Tables\Actions\DetachAction::make(),
-                ])
+            ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([]),
             ]);
@@ -74,11 +78,11 @@ class CoursesRelationManager extends RelationManager
 
     public function getTableHeading(): string
     {
-        return __('Courses');
+        return __('Achievement Badges');
     }
 
     public static function getTitle(Model $ownerRecord, string $pageClass): string
     {
-        return __('Courses');
+        return __('Achievement Badges');
     }
 }

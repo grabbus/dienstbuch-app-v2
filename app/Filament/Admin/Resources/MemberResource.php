@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\App;
 class MemberResource extends Resource
 {
     protected static ?string $model = Member::class;
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
+    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
@@ -36,14 +37,17 @@ class MemberResource extends Resource
                 Forms\Components\TextInput::make('firstname')
                     ->translateLabel()
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(110),
                 Forms\Components\TextInput::make('lastname')
                     ->translateLabel()
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(110),
                 Forms\Components\DatePicker::make('birthdate')
                     ->translateLabel()
-                    ->required(),
+                    ->format('d.m.Y')
+                    ->required()
+                    ->minDate(now()->subYears(100))
+                    ->maxDate(now()),
             ]);
     }
 
@@ -58,7 +62,7 @@ class MemberResource extends Resource
                     ->translateLabel(),
                 Tables\Columns\TextColumn::make('birthdate')
                     ->translateLabel()
-                    ->date('d.m.Y'),
+                    ->format('d.m.Y'),
                 Tables\Columns\TextColumn::make('age')
                     ->translateLabel()
                     ->sortable()
@@ -85,6 +89,7 @@ class MemberResource extends Resource
     public static function getRelations(): array
     {
         return [
+            RelationManagers\AchievementbadgesRelationManager::class,
             RelationManagers\CoursesRelationManager::class
         ];
     }
@@ -95,5 +100,15 @@ class MemberResource extends Resource
             'create' => Pages\CreateMember::route('/create'),
             'edit' => Pages\EditMember::route('/{record}/edit'),
         ];
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('Member');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('Members');
     }
 }

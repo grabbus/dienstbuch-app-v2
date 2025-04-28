@@ -8,9 +8,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Course extends Model
 {
-    public function member(): BelongsToMany
+    public function members(): BelongsToMany
     {
-        return $this->belongsToMany(Member::class)
-            ->withPivot(['course_id', 'member_id', 'date_of_acceptance']);
+        return $this->belongsToMany(
+            Member::class,
+            'course_member',
+            'course_id',
+            'member_id'
+        )
+            ->withPivot(['date_of_acceptance']);
     }
 }

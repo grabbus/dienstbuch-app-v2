@@ -19,6 +19,8 @@ class CourseResource extends Resource
     protected static ?string $model = Course::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?int $navigationSort = 3;
+
 
     public static function form(Form $form): Form
     {
@@ -34,6 +36,7 @@ class CourseResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->heading('asdasd')
             ->columns([
                 TextColumn::make('name')
             ])
@@ -64,5 +67,15 @@ class CourseResource extends Resource
             'create' => Pages\CreateCourse::route('/create'),
             'edit' => Pages\EditCourse::route('/{record}/edit'),
         ];
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('Course');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('Courses');
     }
 }

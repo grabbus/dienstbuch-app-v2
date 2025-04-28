@@ -18,12 +18,23 @@ class Member extends Model
 
     public function courses(): BelongsToMany
     {
-        return $this->belongsToMany(Course::class)
-            ->withPivot(['course_id', 'member_id', 'date_of_acceptance']);
+        return $this->belongsToMany(
+            Course::class,
+            'course_member',
+        'member_id',
+            'course_id'
+        )
+            ->withPivot(['date_of_acceptance']);
     }
-    public function achievementBadge(): HasMany
+    public function achievementBadges(): BelongsToMany
     {
-        return $this->hasMany(AchievementBadge::class);
+        return $this->belongsToMany(
+            AchievementBadge::class,
+            'achievement_badge_member',
+        'member_id',
+        'achievement_badge_id'
+        )
+            ->withPivot(['date_of_acceptance']);
     }
     public function age(): Attribute
     {

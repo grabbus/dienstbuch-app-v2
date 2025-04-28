@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Course;
+use App\Models\Member;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('course_member', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('course_id');
-            $table->unsignedBigInteger('member_id');
+            $table->foreignIdFor(Course::class);
+            $table->foreignIdFor(Member::class);
             $table->date('date_of_acceptance');
             $table->timestamps();
         });
