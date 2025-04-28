@@ -16,14 +16,16 @@ return new class extends Migration
             $table->string('salutation');
             $table->string('firstname');
             $table->string('lastname');
-            $table->string('email');
-            $table->string('mobile');
-            $table->string('phone');
+            $table->string('email')->nullable();
+            $table->string('mobile')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('street');
+            $table->string('house_number');
+            $table->string('city');
+            $table->string('postal_code');
+            $table->date('birthdate');
+            $table->string('birthplace')->nullable();
             $table->string('gender');
-            $table->string('birthdate');
-            $table->string('birthplace');
-            $table->foreignId('course_id')->constrained('courses')->cascadeOnDelete();
-            $table->foreignId('achievement_badge_id')->constrained('achievement_badges')->cascadeOnDelete();
             $table->timestamps();
         });
     }
