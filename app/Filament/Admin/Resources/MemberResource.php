@@ -61,6 +61,7 @@ class MemberResource extends Resource
                     ->translateLabel(),
                 Tables\Columns\TextColumn::make('lastname')
                     ->translateLabel()
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('birthdate')
                     ->translateLabel()
