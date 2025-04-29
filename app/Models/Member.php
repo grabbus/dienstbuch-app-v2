@@ -36,11 +36,10 @@ class Member extends Model
         )
             ->withPivot(['date_of_acceptance']);
     }
-    public function age(): Attribute
+
+    public function getFullNameAttribute(): string
     {
-        return Attribute::make(
-            get: fn () => Carbon::parse($this->birthdate)->age
-        );
+        return "{$this->firstname} {$this->lastname}";
     }
 
     protected static function newFactory()

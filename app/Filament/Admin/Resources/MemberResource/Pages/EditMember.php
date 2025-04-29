@@ -5,6 +5,7 @@ namespace App\Filament\Admin\Resources\MemberResource\Pages;
 use App\Filament\Admin\Resources\MemberResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
+use Illuminate\Contracts\Support\Htmlable;
 
 class EditMember extends EditRecord
 {
@@ -16,8 +17,8 @@ class EditMember extends EditRecord
         ];
     }
 
-    public function getTitle(): string
+    public function getTitle(): string|Htmlable
     {
-        return __('Member');
+        return __('Member') . ' - ' . $this->record->getFullNameAttribute();
     }
 }
