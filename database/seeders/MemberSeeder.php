@@ -173,5 +173,57 @@ class MemberSeeder extends Seeder
             'birthplace' => 'Berlin',
             'gender' => 'W',
         ]);
+
+        // Über 18
+        DB::table('members')->insert([
+            'salutation' => 'Frau',
+            'firstname' => 'Ines',
+            'lastname' => 'Richter',
+            'email' => 'Ines.Richter@feuerwehr-ezelsdorf.de',
+            'mobile' => null,
+            'phone' => '02662 81 37 92',
+            'street' => 'Buelowstrasse',
+            'house_number' => '86',
+            'city' => 'Merkelbach',
+            'postal_code' => '57629',
+            'birthdate' => '2004-11-02',
+            'age' => 21,
+            'birthplace' => 'Merkelbach',
+            'gender' => 'W',
+        ]);
+
+        DB::table('members')->insert([
+            'salutation' => 'Herr',
+            'firstname' => 'Luca',
+            'lastname' => 'Oster',
+            'email' => 'Luca.Oster@feuerwehr-ezelsdorf.de',
+            'mobile' => null,
+            'phone' => '063 75 86 84',
+            'street' => 'Bayreuther Straße',
+            'house_number' => '13',
+            'city' => 'Kaiserslautern',
+            'postal_code' => '67657',
+            'birthdate' => '2006-11-10',
+            'age' => 19,
+            'birthplace' => 'Kaiserslautern',
+            'gender' => 'M',
+        ]);
+
+        DB::table('members')->insert([
+            'salutation' => 'Herr',
+            'firstname' => 'Marco',
+            'lastname' => 'Schweitzer',
+            'email' => 'Marco.Schweitzer@feuerwehr-ezelsdorf.de',
+            'mobile' => null,
+            'phone' => '034651 80 48',
+            'street' => 'Holstenwall',
+            'house_number' => '16',
+            'city' => 'Berga',
+            'postal_code' => '07977',
+            'birthdate' => '2005-07-05',
+            'age' => 20,
+            'birthplace' => 'Berga',
+            'gender' => 'M',
+        ]);
     }
 }

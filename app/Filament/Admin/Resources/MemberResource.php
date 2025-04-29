@@ -5,15 +5,11 @@ namespace App\Filament\Admin\Resources;
 use App\Filament\Admin\Resources\MemberResource\Pages;
 use App\Filament\Admin\Resources\MemberResource\RelationManagers;
 use App\Models\Member;
-use Carbon\Carbon;
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\App;
 
 class MemberResource extends Resource
@@ -21,6 +17,7 @@ class MemberResource extends Resource
     protected static ?string $model = Member::class;
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
     protected static ?int $navigationSort = 1;
+
 
     public static function form(Form $form): Form
     {
@@ -84,6 +81,7 @@ class MemberResource extends Resource
             ]);
     }
 
+
     public static function getRelations(): array
     {
         return [
@@ -98,6 +96,11 @@ class MemberResource extends Resource
             'create' => Pages\CreateMember::route('/create'),
             'edit' => Pages\EditMember::route('/{record}/edit'),
         ];
+    }
+
+    public static function getEloquentQuery(): \Illuminate\Database\Eloquent\Builder
+    {
+        return parent::getEloquentQuery()->where('age', '<', 18);
     }
 
     public static function getModelLabel(): string
