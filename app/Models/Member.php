@@ -3,11 +3,11 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Database\Factories\MemberFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Spatie\LaravelPackageTools\Concerns\Package\HasTranslations;
 
 class Member extends Model
 {
@@ -41,5 +41,10 @@ class Member extends Model
         return Attribute::make(
             get: fn () => Carbon::parse($this->birthdate)->age
         );
+    }
+
+    protected static function newFactory()
+    {
+        return MemberFactory::new();
     }
 }

@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('postal_code');
             $table->date('birthdate');
+            $table->unsignedBigInteger('age')->nullable();
             $table->string('birthplace')->nullable();
             $table->string('gender');
             $table->timestamps();

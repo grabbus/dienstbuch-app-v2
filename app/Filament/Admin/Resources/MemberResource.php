@@ -60,19 +60,15 @@ class MemberResource extends Resource
                 Tables\Columns\TextColumn::make('firstname')
                     ->translateLabel(),
                 Tables\Columns\TextColumn::make('lastname')
-                    ->translateLabel(),
+                    ->translateLabel()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('birthdate')
                     ->translateLabel()
                     ->date('d.m.Y'),
                 Tables\Columns\TextColumn::make('age')
                     ->translateLabel()
                     ->sortable()
-                    ->extraAttributes(function (Member $record) {
-                        if ($record->birthdate->isBirthday()) {
-                            return ['class' => 'bg-success-500'];
-                        }
-                        return [];
-                    }),
+                    ->searchable(),
             ])
             ->filters([
                 //
