@@ -15,6 +15,8 @@ class Member extends Model
         'email_verified_at' => 'datetime',
         'birthdate' => 'date',
     ];
+    public string $firstname;
+    public string $lastname;
 
     public function courses(): BelongsToMany
     {

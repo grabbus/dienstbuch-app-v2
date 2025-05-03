@@ -51,4 +51,9 @@ class Archive extends Page implements HasTable
     {
         return __('Archive');
     }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('Archive');
+    }
 }
