@@ -31,10 +31,12 @@ class Archive extends Page implements HasTable
                     ->translateLabel(),
                 TextColumn::make('lastname')
                     ->translateLabel(),
-                TextColumn::make('age')
-                    ->translateLabel(),
-                TextColumn::make('reason_for_leaving')
+                TextColumn::make('date_of_leaving')
+                    ->translateLabel()
+                    ->date('d.m.Y'),
+                TextColumn::make('reason_of_leaving')
                 ->translateLabel(),
+
             ])
             ->filters([
                 //

@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
+use App\CreatedUpdatedBy;
 use Database\Factories\MemberFactory;
-use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Member extends Model
 {
+    use CreatedUpdatedBy;
+
     protected $table = 'members';
     protected $guarded = [];
     protected $casts = [
@@ -18,6 +19,15 @@ class Member extends Model
         'birthdate' => 'date',
     ];
 
+    public function createdBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function updatedBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
     public function courses(): BelongsToMany
     {
         return $this->belongsToMany(

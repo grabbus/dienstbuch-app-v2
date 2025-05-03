@@ -27,6 +27,13 @@ return new class extends Migration
             $table->unsignedBigInteger('age')->nullable();
             $table->string('birthplace')->nullable();
             $table->string('gender');
+            $table->string('reason_of_leaving')->nullable();
+            $table->date('date_of_leaving')->nullable();
+            $table->boolean('is_archived')->default(false);
+            $table->unsignedBigInteger("created_by")->nullable();
+            $table->foreign("created_by")->references("id")->on("users")->onDelete("cascade");
+            $table->unsignedBigInteger("updated_by")->nullable();
+            $table->foreign("updated_by")->references("id")->on("users")->onDelete("cascade");
             $table->timestamps();
         });
     }

@@ -6,6 +6,7 @@ use App\Filament\Admin\Resources\MemberResource\Pages;
 use App\Filament\Admin\Resources\MemberResource\RelationManagers;
 use App\Models\Member;
 use Filament\Forms;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
@@ -203,6 +204,44 @@ class MemberResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\Action::make('archive')
+                    ->label('to_archive')
+                    ->translateLabel()
+                    ->icon('heroicon-m-archive-box-arrow-down')
+                    ->form([
+                        Section::make()
+                            ->columns([
+                                'sm' => 2,
+                                'xl' => 6,
+                                '2xl' => 8,
+                            ])->schema([
+                                TextInput::make('reason_for_leaving')
+                                    ->label('Reason for leaving')
+                                    ->translateLabel()
+                                    ->required()
+                                    ->maxLength(255)
+                                    ->columnSpan([
+                                        'sm' => 1,
+                                        'xl' => 3,
+                                        '2xl' => 4,
+                                    ]),
+                                DatePicker::make('date_of_leaving')
+                                    ->label('Date of leaving')
+                                    ->translateLabel()
+                                    ->format('d.m.Y')
+                                    ->locale(App::getLocale())
+                                    ->required()
+                                    ->minDate(now()->subYears(100))
+                                    ->maxDate(now())
+                                    ->displayFormat('d.m.Y')
+                                    ->locale(App::getLocale())
+                                    ->columnSpan([
+                                        'sm' => 1,
+                                        'xl' => 3,
+                                        '2xl' => 4,
+                                    ]),
+                            ])
+                    ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

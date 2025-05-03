@@ -36,7 +36,6 @@ class CourseResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->heading('asdasd')
             ->columns([
                 TextColumn::make('name')
             ])

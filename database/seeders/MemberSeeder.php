@@ -23,7 +23,7 @@ class MemberSeeder extends Seeder
             'street' => 'Stresemannstraße',
             'house_number' => '48',
             'city' => 'Namborn',
-            'postal_code' => '66640 ',
+            'postal_code' => '66640',
             'birthdate' => '2013-01-20',
             'age' => 12,
             'birthplace' => 'Namborn',
@@ -39,7 +39,7 @@ class MemberSeeder extends Seeder
             'street' => 'Meininger Strasse',
             'house_number' => '54',
             'city' => 'Neunkirchen',
-            'postal_code' => '66640 ',
+            'postal_code' => '66538',
             'birthdate' => '2011-08-20',
             'age' => 13,
             'birthplace' => 'Neunkirchen',
@@ -188,8 +188,11 @@ class MemberSeeder extends Seeder
             'postal_code' => '57629',
             'birthdate' => '2004-11-02',
             'age' => 21,
+            'reason_of_leaving' => 'Übertritt in aktive Wehr',
+            'date_of_leaving' => '2021-11-02',
             'birthplace' => 'Merkelbach',
             'gender' => 'W',
+            'is_archived' => true,
         ]);
 
         DB::table('members')->insert([
@@ -206,6 +209,9 @@ class MemberSeeder extends Seeder
             'birthdate' => '2006-11-10',
             'age' => 19,
             'birthplace' => 'Kaiserslautern',
+            'is_archived' => true,
+            'reason_of_leaving' => 'Umzug',
+            'date_of_leaving' => '2012-11-01',
             'gender' => 'M',
         ]);
 
@@ -221,9 +227,12 @@ class MemberSeeder extends Seeder
             'city' => 'Berga',
             'postal_code' => '07977',
             'birthdate' => '2005-07-05',
+            'is_archived' => true,
             'age' => 20,
             'birthplace' => 'Berga',
             'gender' => 'M',
+            'reason_of_leaving' => 'Übertritt in aktive Wehr',
+            'date_of_leaving' => '2023-07-05',
         ]);
     }
 }

@@ -24,8 +24,10 @@
     "Date of acceptance": "Tag der Abnahme",
     "Image": "Bild",
     "Archive": "Archiv",
-    "Reason for leaving": "Austrittsgrund",
+    "Reason of leaving": "Austrittsgrund",
+    "Date of leaving": "Austrittsdatum",
     "personal": "Persönliches",
     "address": "Adresse",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "to_archive": "Archivieren"
 }
