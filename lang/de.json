@@ -9,9 +9,9 @@
     "Mobile": "Mobiltelefon",
     "Phone": "Telefon",
     "Street": "Straße",
-    "Housenumber": "Hausnummer",
+    "House number": "Hausnummer",
     "City": "Ort",
-    "Postalcode": "Postleitzahl",
+    "Postal code": "Postleitzahl",
     "Birthdate": "Geburtsdatum",
     "Birthplace": "Geburtsort",
     "Gender": "Geschlecht",
@@ -24,5 +24,8 @@
     "Date of acceptance": "Tag der Abnahme",
     "Image": "Bild",
     "Archive": "Archiv",
-    "Reason for leaving": "Austrittsgrund"
+    "Reason for leaving": "Austrittsgrund",
+    "personal": "Persönliches",
+    "address": "Adresse",
+    "contact": "Kontakt"
 }

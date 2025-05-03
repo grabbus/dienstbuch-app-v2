@@ -14,6 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        //ToDo: Remove before live
         DB::table('users')->insert([
             'name' => 'Admin User',
             'email' => 'admin@feuerwehr-ezelsdorf.de',

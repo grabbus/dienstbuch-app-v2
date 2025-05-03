@@ -11,12 +11,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Member extends Model
 {
+    protected $table = 'members';
+    protected $guarded = [];
     protected $casts = [
         'email_verified_at' => 'datetime',
         'birthdate' => 'date',
     ];
-    public string $firstname;
-    public string $lastname;
 
     public function courses(): BelongsToMany
     {
