@@ -14,6 +14,8 @@ use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Auth\Access\Response;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\App;
 use Filament\Forms\Components\Tabs;
 class MemberResource extends Resource
@@ -291,4 +293,6 @@ class MemberResource extends Resource
     {
         return __('Members');
     }
+
+
 }
