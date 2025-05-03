@@ -24,7 +24,7 @@ class Archive extends Page implements HasTable
     public function table(Table $table): Table
     {
         return $table
-            ->query(Member::query()->where('age', '>=', 18))
+            ->query(Member::query()->where('is_archived', true))
             ->striped()
             ->columns([
                 TextColumn::make('firstname')

@@ -7,22 +7,20 @@ use App\Filament\Admin\Resources\MemberResource\RelationManagers;
 use App\Models\Member;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\App;
 use Filament\Forms\Components\Tabs;
-use Filament\Forms\Components\Placeholder;
 class MemberResource extends Resource
 {
     protected static ?string $model = Member::class;
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
     protected static ?int $navigationSort = 1;
-
 
     public static function form(Form $form): Form
     {
@@ -228,7 +226,6 @@ class MemberResource extends Resource
                                 DatePicker::make('date_of_leaving')
                                     ->label('Date of leaving')
                                     ->translateLabel()
-                                    ->format('d.m.Y')
                                     ->locale(App::getLocale())
                                     ->required()
                                     ->minDate(now()->subYears(100))
@@ -241,7 +238,18 @@ class MemberResource extends Resource
                                         '2xl' => 4,
                                     ]),
                             ])
-                    ]),
+                    ])
+                    ->action(function (Member $member, array $data): void {
+                        $member->reason_of_leaving = $data['reason_for_leaving'];
+                        $member->date_of_leaving = $data['date_of_leaving'];
+                        $member->is_archived = true;
+                        $member->save();
+
+                        Notification::make()
+                            ->title('Mitglied ins Archiv verschoben.')
+                            ->success()
+                            ->send();
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -269,7 +277,9 @@ class MemberResource extends Resource
 
     public static function getEloquentQuery(): \Illuminate\Database\Eloquent\Builder
     {
-        return parent::getEloquentQuery()->where('age', '<', 18);
+        return parent::getEloquentQuery()
+            ->where('age', '<', 18)
+            ->where('is_archived', false);
     }
 
     public static function getModelLabel(): string
