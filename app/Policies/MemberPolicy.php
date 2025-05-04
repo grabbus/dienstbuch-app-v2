@@ -103,4 +103,9 @@ class MemberPolicy
     {
         return $user->checkPermissionTo('force-delete-any Member');
     }
+
+    public function archive(User $user, Member $member): bool
+    {
+        return $user->checkPermissionTo('archive Member');
+    }
 }
