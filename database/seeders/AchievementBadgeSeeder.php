@@ -53,25 +53,5 @@ class AchievementBadgeSeeder extends Seeder
             'name' => 'Leistungsprüfung: Gruppe im Löscheinsatz',
             'level' => 'Bronze (Stufe 1)',
         ]);
-        DB::table('achievement_badges')->insert([
-            'name' => 'Leistungsprüfung: Gruppe im Löscheinsatz',
-            'level' => 'Silber (Stufe 2)',
-        ]);
-        DB::table('achievement_badges')->insert([
-            'name' => 'Leistungsprüfung: Gruppe im Löscheinsatz',
-            'level' => 'Gold (Stufe 3)',
-        ]);
-        DB::table('achievement_badges')->insert([
-            'name' => 'Leistungsprüfung: Gruppe im Löscheinsatz',
-            'level' => 'Gold-Blau (Stufe 4)',
-        ]);
-        DB::table('achievement_badges')->insert([
-            'name' => 'Leistungsprüfung: Gruppe im Löscheinsatz',
-            'level' => 'Gold-Grün (Stufe 5)',
-        ]);
-        DB::table('achievement_badges')->insert([
-            'name' => 'Leistungsprüfung: Gruppe im Löscheinsatz',
-            'level' => 'Gold-Rot (Stufe 6)',
-        ]);
     }
 }
