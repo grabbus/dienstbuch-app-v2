@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Course extends Model
 {
+    protected $table = 'courses';
+    protected $guarded = [];
     public function members(): BelongsToMany
     {
         return $this->belongsToMany(

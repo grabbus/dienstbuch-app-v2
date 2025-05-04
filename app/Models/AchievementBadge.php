@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class AchievementBadge extends Model
 {
+    protected $table = 'achievement_badges';
+    protected $guarded = [];
     public function members(): BelongsToMany
     {
         return $this->belongsToMany(

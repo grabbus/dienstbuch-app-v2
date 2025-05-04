@@ -204,7 +204,10 @@ class MemberResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make()
+                ->visible(auth()->user()->can('view Member')),
                 Tables\Actions\Action::make('archive')
+                    ->visible(auth()->user()->can('archive Member'))
                     ->label('to_archive')
                     ->translateLabel()
                     ->icon('heroicon-m-archive-box-arrow-down')
@@ -274,6 +277,7 @@ class MemberResource extends Resource
             'index' => Pages\ListMembers::route('/'),
             'create' => Pages\CreateMember::route('/create'),
             'edit' => Pages\EditMember::route('/{record}/edit'),
+            'view' => Pages\ViewMember::route('/{record}'),
         ];
     }
 
