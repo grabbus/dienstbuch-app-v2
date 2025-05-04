@@ -12,7 +12,7 @@ use Filament\Tables\Columns\TextColumn;
 class Archive extends Page implements HasTable
 {
     use InteractsWithTable;
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static ?string $navigationIcon = 'heroicon-o-archive-box';
 
     protected static string $view = 'filament.admin.pages.archive';
     protected static ?int $navigationSort = 4;
