@@ -297,6 +297,4 @@ class MemberResource extends Resource
     {
         return __('Members');
     }
-
-
 }

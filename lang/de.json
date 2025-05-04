@@ -30,5 +30,8 @@
     "personal": "Persönliches",
     "address": "Adresse",
     "contact": "Kontakt",
-    "to_archive": "Archivieren"
+    "to_archive": "Archivieren",
+    "User": "Benutzer",
+    "Users": "Benutzer",
+    "Roles": "Rollen"
 }
