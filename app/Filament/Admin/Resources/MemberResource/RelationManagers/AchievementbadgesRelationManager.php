@@ -86,4 +86,14 @@ class AchievementbadgesRelationManager extends RelationManager
     {
         return __('Achievement Badges');
     }
+
+    public static function getRecordLabel(): string
+    {
+        return __('Achievement Badge');
+    }
+
+    public static function getPluralRecordLabel(): string
+    {
+        return __('Achievement Badges');
+    }
 }

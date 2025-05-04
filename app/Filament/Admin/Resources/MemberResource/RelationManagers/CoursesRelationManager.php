@@ -82,4 +82,14 @@ class CoursesRelationManager extends RelationManager
     {
         return __('Courses');
     }
+
+    public static function getRecordLabel(): string
+    {
+        return __('Courses');
+    }
+
+    public static function getPluralRecordLabel(): string
+    {
+        return __('Courses');
+    }
 }
